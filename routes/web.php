@@ -35,4 +35,36 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+
+
+
+/**
+ * Customer 
+ */
+Route::resource('/customers', App\Http\Controllers\CustomerController::class);
+Route::resource('/api/customers', App\Http\Controllers\Api\CustomerController::class, [
+    'names' => [
+        'index' => 'api.customer.index',
+    ]
+]);
+
+/**
+ * Concern
+ */
+Route::resource('/customer/{customer}/concerns', App\Http\Controllers\CustomerConcernController::class);
+Route::resource('/concerns', App\Http\Controllers\ConcernController::class);
+Route::resource('/concern/approved', App\Http\Controllers\ApprovedConcernController::class);
+Route::resource('/concern/declined', App\Http\Controllers\DeclinedConcernController::class);
+
+/**
+ * Schedule
+ */
+Route::resource('/customer/{user}/schedules', App\Http\Controllers\CustomerScheduleController::class);
+Route::resource('/schedules', App\Http\Controllers\ScheduleController::class);
+
+/**
+ * User
+ */
+Route::resource('/users', App\Http\Controllers\UserController::class);
 require __DIR__.'/auth.php';

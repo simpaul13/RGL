@@ -8,6 +8,7 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/js/**/*.vue',
+        "./node_modules/flowbite/**/*.js"
     ],
 
     theme: {
@@ -18,5 +19,23 @@ export default {
         },
     },
 
-    plugins: [forms],
+    plugins: [require("daisyui")],
+
+    daisyui: {
+        themes: [
+            {
+                mytheme : {
+                    "primary": "#4f46e5",
+                    "secondary": "#6b7280",
+                    "accent": "#d97706",
+                    "neutral": "#d6d3d1",
+                    "base-100": "#f3f4f6",
+                    "info": "#60a5fa",
+                    "success": "#4ade80",
+                    "warning": "#fbbf24",
+                    "error": "#dc2626",
+                }
+            }
+        ],
+    },
 };
