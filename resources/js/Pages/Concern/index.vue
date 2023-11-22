@@ -46,8 +46,10 @@
                                     {{ concern.type_aircon }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    <div v-if="concern.user_id !== null" class="badge badge-secondary">In Progress</div>
-                                    <div v-if="concern.user_id === null" class="badge badge-error">Pending</div>
+                                    <div v-if="concern.user_id !== null && concern.status !== 'Completed'" class="badge badge-secondary">In Progress</div>
+                                    <div v-if="concern.user_id !== null && concern.status === 'Completed'" class="badge badge-success">Completed</div>
+                                    <div v-if="concern.user_id === null " class="badge badge-error">Pending</div>
+
                                 </td>
                                 <td class="px-6 py-4">
                                     <a 
@@ -57,12 +59,12 @@
                                         data-tip="Delete Concern">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </a>
-                                    <!-- {{$page.props.auth.user}} -->
+
                                     <div v-if="concern.user_id === null && concern.user_id !== $page.props.auth.user.id"
                                         class="tooltip" data-tip="take concern">
                                         <i class="fa-regular fa-heart" @click="approvedConcern(concern.concern_id)"></i>
                                     </div>
-                                    <div v-if="concern.user_id === $page.props.auth.user.id"
+                                    <div v-if="concern.user_id === $page.props.auth.user.id && concern.status !== 'Completed'"
                                         class="tooltip" data-tip="remove concern">
                                         <i class="fa-solid fa-heart-crack" @click="declinedConcern(concern.concern_id)"></i>
                                     </div>

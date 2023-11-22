@@ -38,17 +38,20 @@
                                     {{ schedule.schedule_date }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    <div class="badge badge-success">
+                                    <div class="badge badge-success" v-if="schedule.status === 'Completed'">
+                                        {{ schedule.status }}
+                                    </div>
+                                    <div class="badge badge-accent" v-if="schedule.status !== 'Completed'">
                                         {{ schedule.status }}
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="tooltip" data-tip="remove concern">
-                                        <i class="fa-solid fa-heart-crack fa-2xl" @click="declinedConcern(schedule.concern_id)"></i>
+                                        <i class="fa-solid fa-heart-crack fa-xl mr-2" @click="declinedConcern(schedule.concern_id)"></i>
                                     </div>
 
                                     <div class="tooltip" data-tip="change status to complete">
-                                        <i class="fa-solid fa-check-to-slot fa-2xl" @click="completeConcern(schedule_concern_id)"></i>
+                                        <i class="fa-solid fa-check-to-slot fa-xl" @click="completeConcern(schedule.concern_id)"></i>
                                     </div>
                                 </td>
 

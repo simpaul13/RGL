@@ -56,7 +56,7 @@ class CompletedConcernController extends Controller
     {
         $concern = concern::findOrFail($id);
 
-        $schedule = schedule::where('concer_id', $concern->concern_id);
+        $schedule = schedule::findOrFail($concern->schedule_id);
 
 
         $schedule->update([

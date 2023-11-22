@@ -24,5 +24,13 @@ class concern extends Model
 
     protected $primaryKey = 'concern_id';
 
+    public function scopeJoinShedule($query)
+    {
+        $query->addSelect(['*']);
+
+        $query->leftjoin('schedules', 'schedules.schedules_id', '=', 'concerns.schedule_id');
+
+        return $query;
+    }
 }
 
