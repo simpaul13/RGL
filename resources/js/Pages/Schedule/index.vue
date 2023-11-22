@@ -50,7 +50,7 @@
                                         <i class="fa-solid fa-heart-crack fa-xl mr-2" @click="declinedConcern(schedule.concern_id)"></i>
                                     </div>
 
-                                    <div class="tooltip" data-tip="change status to complete">
+                                    <div class="tooltip" data-tip="change status to complete" v-if="schedule.status !== 'Completed'">
                                         <i class="fa-solid fa-check-to-slot fa-xl" @click="completeConcern(schedule.concern_id)"></i>
                                     </div>
                                 </td>
