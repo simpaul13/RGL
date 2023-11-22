@@ -54,6 +54,7 @@ Route::resource('/customer/{customer}/concerns', App\Http\Controllers\CustomerCo
 Route::resource('/concerns', App\Http\Controllers\ConcernController::class);
 Route::resource('/concern/approved', App\Http\Controllers\ApprovedConcernController::class);
 Route::resource('/concern/declined', App\Http\Controllers\DeclinedConcernController::class);
+Route::resource('/concern/completed', App\Http\Controllers\CompletedConcernController::class);
 
 /**
  * Schedule

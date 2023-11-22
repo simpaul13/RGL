@@ -52,6 +52,14 @@
                                     <a :href="'/customers/'+customer.customer_id">
                                         <i class="fa-regular fa-eye" ></i>
                                     </a>
+
+                                    <a 
+                                        @click="deleteCustomer(customer.customer_id)"
+                                        href="#" 
+                                        class="tooltip mr-2"
+                                        data-tip="Delete Customer">
+                                        <i class="fa-solid fa-trash-can fa-2xl"></i>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
@@ -215,6 +223,38 @@
                         title: 'Error Creating Customer',
                         text: `Error creating customer: ${error.message}`,
                     });
+                }
+            },
+
+            async deleteCustomer(customer_id) {
+                const confirmResult = await Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'You won\'t be able to revert this!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'No, cancel!',
+                    reverseButtons: true, // Reverses the order of the buttons (default is false)
+                });
+                if (confirmResult.isConfirmed) {
+                    try {
+
+                        await axios.delete(`/customers/${customer_id}`);
+                        
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Customer Deleted Successfully',
+                        }).then(() => {
+                            window.location.reload();
+                        });
+
+                    } catch (error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error Deleting Customer',
+                            text: `Error deleting Customer : ${error.message}`
+                        });
+                    }
                 }
             },
 

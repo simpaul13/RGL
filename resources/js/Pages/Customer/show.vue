@@ -56,10 +56,10 @@
                         <thead class="text-xs text-white uppercase bg-blue-700">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
-                                    Name
+                                    Concern
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Gender
+                                    Type of Aircon
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Status
@@ -283,6 +283,11 @@
                     }
                 }
             },
+
+            closeModal() {
+                // Close the modal
+                document.getElementById('my_modal_1').close();
+            }
         }
     };
 </script>

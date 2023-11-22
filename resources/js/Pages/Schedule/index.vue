@@ -46,6 +46,10 @@
                                     <div class="tooltip" data-tip="remove concern">
                                         <i class="fa-solid fa-heart-crack fa-2xl" @click="declinedConcern(schedule.concern_id)"></i>
                                     </div>
+
+                                    <div class="tooltip" data-tip="change status to complete">
+                                        <i class="fa-solid fa-check-to-slot fa-2xl" @click="completeConcern(schedule_concern_id)"></i>
+                                    </div>
                                 </td>
 
                             </tr>
@@ -103,6 +107,38 @@
                             icon: 'error',
                             title: 'Error Declineding Concern',
                             text: `Error Declineding Concern : ${error.message}`
+                        });
+                    }
+                }
+            },
+
+            async completeConcern(concern_id) {
+                const confirmResult = await Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'You won\'t be able to revert this!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, Take it!',
+                    cancelButtonText: 'No, cancel!',
+                    reverseButtons: true, // Reverses the order of the buttons (default is false)
+                });
+                if (confirmResult.isConfirmed) {
+                    try {
+
+                        await axios.put(`/concern/completed/${concern_id}`);
+                        
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Concern Completed Successfully',
+                        }).then(() => {
+                            window.location.reload();
+                        });
+
+                    } catch (error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error Change Status',
+                            text: `Error Change Status of the Concern : ${error.message}`
                         });
                     }
                 }
