@@ -53,6 +53,7 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     <a 
+                                        v-if="concern.status !== 'Completed'"
                                         @click="deleteConcern(concern.concern_id)"
                                         href="#" 
                                         class="tooltip mr-2"
@@ -92,7 +93,18 @@
                     </div>
                     <div class="form-control w-full max-w-xs">
                         <span class="label-text mb-2">Type</span>
-                        <input v-model="newConcern.type" type="text" class="input input-bordered w-full max-w-xs" />
+                        <select v-model="newConcern.type" class="select select-bordered w-full max-w-xs">
+                            <option value="" disabled>Select a Type of Concern</option>
+                            <option value="cleaning">
+                                Cleaning
+                            </option>
+                            <option value="checkup">
+                                Checkup
+                            </option>
+                            <option value="repair">
+                                Repair
+                            </option>
+                        </select>
                     </div>
                     <div class="form-control w-full max-w-xs mt-2">
                         <span class="label-text mb-2">Type Of Aircon</span>

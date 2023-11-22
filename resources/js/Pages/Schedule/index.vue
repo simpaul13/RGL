@@ -50,8 +50,12 @@
                                         <i class="fa-solid fa-heart-crack fa-xl mr-2" @click="declinedConcern(schedule.concern_id)"></i>
                                     </div>
 
+                                    <div class="tooltip" data-tip="change status" v-if="schedule.status === 'Completed'">
+                                        <i class="fa-solid fa-file-circle-xmark fa-xl" @click="changeStatus(schedule.concern_id)"></i>
+                                    </div>
+
                                     <div class="tooltip" data-tip="change status to complete" v-if="schedule.status !== 'Completed'">
-                                        <i class="fa-solid fa-check-to-slot fa-xl" @click="completeConcern(schedule.concern_id)"></i>
+                                        <i class="fa-solid fa-file-circle-check fa-xl" @click="completeConcern(schedule.concern_id)"></i>
                                     </div>
                                 </td>
 
@@ -142,6 +146,40 @@
                             icon: 'error',
                             title: 'Error Change Status',
                             text: `Error Change Status of the Concern : ${error.message}`
+                        });
+                    }
+                }
+            },
+
+            async changeStatus(concern_id) {
+                const confirmResult = await Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'You won\'t be able to revert this!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, Take it!',
+                    cancelButtonText: 'No, cancel!',
+                    reverseButtons: true, // Reverses the order of the buttons (default is false)
+                });
+
+                if (confirmResult.isConfirmed) {
+                    try {
+
+                        await axios.put(`/concern/approved/${concern_id}`);
+                        
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Concern Change Successfully',
+                        }).then(() => {
+                            window.location.reload();
+                            closeModal();
+                        });
+
+                    } catch (error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error Change Concern',
+                            text: `Error Change Concern : ${error.message}`
                         });
                     }
                 }
