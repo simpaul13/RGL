@@ -70,36 +70,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-white border-b" v-for="concern in concerns" :key="concern.concern_id">
+                            <tr class="bg-white border-b" v-for="schedule in schedules" :key="schedule.schdeules_id">
                                 <th scope="row">
-                                    {{ concern.type }}
+                                    {{ schedule.schedule_date }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{ concern.type_aircon }}
+                                    <div class="badge badge-success" v-if="schedule.status === 'Completed'">
+                                        {{ schedule.status }}
+                                    </div>
+                                    <div class="badge badge-accent" v-if="schedule.status !== 'Completed'">
+                                        {{ schedule.status }}
+                                    </div>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <div v-if="concern.user_id !== null" class="badge badge-secondary">In Progress</div>
-                                    <div v-if="concern.user_id === null" class="badge badge-error">Pending</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <a 
-                                        @click="deleteConcern(concern.concern_id)"
-                                        href="#" 
-                                        class="tooltip mr-2"
-                                        data-tip="Delete Concern">
-                                        <i class="fa-solid fa-trash-can fa-2xl"></i>
-                                    </a>
-                                    <!-- {{$page.props.auth.user}} -->
-                                    <div v-if="concern.user_id === null && concern.user_id !== $page.props.auth.user.id"
-                                        class="tooltip" data-tip="take concern">
-                                        <i class="fa-regular fa-heart fa-2xl" @click="approvedConcern(concern.concern_id)"></i>
+                                    <div class="tooltip" data-tip="remove concern">
+                                        <i class="fa-solid fa-heart-crack fa-xl mr-2" @click="declinedConcern(schedule.concern_id)"></i>
                                     </div>
-                                    <div v-if="concern.user_id === $page.props.auth.user.id"
-                                        class="tooltip" data-tip="remove concern">
-                                        <i class="fa-solid fa-heart-crack fa-2xl" @click="declinedConcern(concern.concern_id)"></i>
+
+                                    <div class="tooltip" data-tip="change status to complete" v-if="schedule.status !== 'Completed'">
+                                        <i class="fa-solid fa-check-to-slot fa-xl" @click="completeConcern(schedule.concern_id)"></i>
                                     </div>
-                                    
                                 </td>
+
                             </tr>
                         </tbody>
                     </table>
