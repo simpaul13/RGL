@@ -55,16 +55,16 @@
                                         href="#" 
                                         class="tooltip mr-2"
                                         data-tip="Delete Concern">
-                                        <i class="fa-solid fa-trash-can fa-2xl"></i>
+                                        <i class="fa-solid fa-trash-can"></i>
                                     </a>
                                     <!-- {{$page.props.auth.user}} -->
                                     <div v-if="concern.user_id === null && concern.user_id !== $page.props.auth.user.id"
                                         class="tooltip" data-tip="take concern">
-                                        <i class="fa-regular fa-heart fa-2xl" @click="approvedConcern(concern.concern_id)"></i>
+                                        <i class="fa-regular fa-heart" @click="approvedConcern(concern.concern_id)"></i>
                                     </div>
                                     <div v-if="concern.user_id === $page.props.auth.user.id"
                                         class="tooltip" data-tip="remove concern">
-                                        <i class="fa-solid fa-heart-crack fa-2xl" @click="declinedConcern(concern.concern_id)"></i>
+                                        <i class="fa-solid fa-heart-crack" @click="declinedConcern(concern.concern_id)"></i>
                                     </div>
                                     
                                 </td>
