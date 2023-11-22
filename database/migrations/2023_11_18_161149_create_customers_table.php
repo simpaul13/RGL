@@ -19,7 +19,7 @@ return new class extends Migration
                 ->nullable();
             $table->enum('customer_gender', ['Male', 'Female']);
             $table->text('email');
-            $table->text('contact_person');
+            $table->text('company');
             $table->text('contact_number');
             $table->text('country');
             $table->text('province');

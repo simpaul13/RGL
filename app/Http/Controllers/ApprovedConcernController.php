@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\concern;
+use App\Models\schedule;
+use Carbon\Carbon;
 
 class ApprovedConcernController extends Controller
 {
@@ -54,8 +56,17 @@ class ApprovedConcernController extends Controller
     {
         $concern = concern::findOrFail($id);
 
+        $schedule = schedule::create([
+            'schedule_date' => Carbon::now()->addDays(1),
+            'status' => 'Ongoing',
+            'created_by' => auth()->id(),
+            'modified_by' => auth()->id() 
+        ]);
+
         $concern->update([
-            'user_id' => auth()->id()
+            'schedule_id' => $schedule->schedules_id,
+            'user_id' => auth()->id(),
+            'modified_by' => auth()->id(),
         ]);
 
         return [

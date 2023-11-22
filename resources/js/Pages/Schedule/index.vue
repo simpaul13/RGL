@@ -43,7 +43,9 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
-
+                                    <div class="tooltip" data-tip="remove concern">
+                                        <i class="fa-solid fa-heart-crack fa-2xl" @click="declinedConcern(schedule.concern_id)"></i>
+                                    </div>
                                 </td>
 
                             </tr>
@@ -57,6 +59,7 @@
 </template>
 <script>
     import AuthenticatedLayout from "../../Layouts/AuthenticatedLayout.vue"
+    import Swal from 'sweetalert2';
 
     export default {
         components: {
@@ -72,6 +75,42 @@
         },  
 
         methods : {
+
+            async declinedConcern(concern_id) {
+                const confirmResult = await Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'You won\'t be able to revert this!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, Take it!',
+                    cancelButtonText: 'No, cancel!',
+                    reverseButtons: true, // Reverses the order of the buttons (default is false)
+                });
+                if (confirmResult.isConfirmed) {
+                    try {
+
+                        await axios.put(`/concern/declined/${concern_id}`);
+                        
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Concern Declined Successfully',
+                        }).then(() => {
+                            window.location.reload();
+                        });
+
+                    } catch (error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error Declineding Concern',
+                            text: `Error Declineding Concern : ${error.message}`
+                        });
+                    }
+                }
+            },
+
+            closeModal() {
+                document.getElementById('my_modal_1').close();
+            },
 
         }
     };

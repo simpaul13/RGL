@@ -24,10 +24,10 @@
                         <thead class="text-xs text-white uppercase bg-blue-700">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
-                                    Name
+                                    Concern
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Gender
+                                    Type of Aircon
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Status
@@ -226,6 +226,7 @@
                             title: 'Concern Taken Successfully',
                         }).then(() => {
                             window.location.reload();
+                            closeModal();
                         });
 
                     } catch (error) {
@@ -269,7 +270,12 @@
                     }
                 }
             },
+
+            closeModal() {
+                document.getElementById('my_modal_1').close();
+            },
         },
+
 
         mounted() {
             // Fetch customers when the component is mounted

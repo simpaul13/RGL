@@ -27,10 +27,10 @@
                                     Name
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Gender
+                                    Contact Number
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Email
+                                    Address
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Action
@@ -43,10 +43,10 @@
                                     {{ customer.customer_firstname }} {{ customer.customer_lastname }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{ customer.customer_gender }}
+                                    {{ customer.contact_number }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ customer.email }}
+                                    {{ customer.additional_information }} {{ customer.barangay }} {{ customer.city }} {{ customer.province }} {{ customer.zipcode }}
                                 </td>
                                 <td class="px-6 py-4">
                                     <a :href="'/customers/'+customer.customer_id">
@@ -95,8 +95,8 @@
             </div>
 
             <div class="form-control w-full max-w-xs mt-2">
-              <label class="label-text mb-2">Contact Person</label>
-              <input v-model="newCustomer.contact_person" type="text" class="input input-bordered w-full max-w-xs" />
+              <label class="label-text mb-2">Company</label>
+              <input v-model="newCustomer.company" type="text" class="input input-bordered w-full max-w-xs" />
             </div>
 
             <div class="form-control w-full max-w-xs mt-2">
@@ -141,7 +141,7 @@
 
             <div class="modal-action">
               <button type="submit" class="btn">Create Customer</button>
-              <button type="button" @click="closeCreateModal" class="btn btn-error">Close</button>
+              <button type="button" @click="closeModal" class="btn btn-error">Close</button>
             </div>
           </form>
         </div>
@@ -172,7 +172,7 @@
                     customer_middlename: '',
                     customer_gender: 'male',
                     email: '',
-                    contact_person: '',
+                    company: '',
                     contact_number: '',
                     country: '',
                     province: '',
@@ -198,6 +198,7 @@
                             title: 'Customer Created Successfully',
                         }).then(() => {
                             window.location.reload();
+                            closeModal();
                         });
                     } else {
                         Swal.fire({
@@ -226,7 +227,7 @@
                 newCustomer.customer_middlename = ''
                 newCustomer.customer_gender = 'male'
                 newCustomer.email = ''
-                newCustomer.contact_person = ''
+                newCustomer.company = ''
                 newCustomer.contact_number = ''
                 newCustomer.country = ''
                 newCustomer.province = ''

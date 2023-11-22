@@ -18,7 +18,7 @@ class Customer extends Model
         'customer_middlename',
         'customer_gender',
         'email',
-        'contact_person',
+        'company',
         'contact_number',
         'country',
         'province',

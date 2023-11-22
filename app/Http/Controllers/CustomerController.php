@@ -45,7 +45,7 @@ class CustomerController extends Controller
             'customer_middlename' => encrypt(strtolower($request->customer_middlename)),
             'customer_gender' => $request->customer_gender,
             'email' => encrypt(strtolower($request->email)),
-            'contact_person' => encrypt(strtolower($request->contact_person)),
+            'company' => encrypt(strtolower($request->company)),
             'contact_number' => encrypt(strtolower($request->contact_number)),
             'country' => encrypt(strtolower($request->country)),
             'province' => encrypt(strtolower($request->province)),
