@@ -50,7 +50,7 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     <a :href="'/customers/'+customer.customer_id">
-                                        <i class="fa-regular fa-eye" ></i>
+                                        <i class="fa-regular fa-eye mr-2"></i>
                                     </a>
 
                                     <a 
@@ -58,7 +58,7 @@
                                         href="#" 
                                         class="tooltip mr-2"
                                         data-tip="Delete Customer">
-                                        <i class="fa-solid fa-trash-can fa-2xl"></i>
+                                        <i class="fa-solid fa-trash-can"></i>
                                     </a>
                                 </td>
                             </tr>
