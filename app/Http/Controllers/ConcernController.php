@@ -16,7 +16,7 @@ class ConcernController extends Controller
      */
     public function index()
     {
-        $concerns = concern::joinShedule()->get();
+        $concerns = concern::joinShedule()->orderBy('concerns.created_at', 'DESC')->get();
 
         return Inertia::render('Concern/index', [
             'concerns' => $concerns,

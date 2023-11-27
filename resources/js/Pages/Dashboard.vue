@@ -97,7 +97,40 @@ import { ref, onMounted } from 'vue';
 
                     <div class="card bg-white m-2 shadow-xl col-start-1 col-span-2">
                         <div class="card-body">
-                            <h2 class="card-title">Lestat Concern</h2>
+                            <h2 class="card-title">List Customer</h2>
+                            <div class="overflow-x-auto">
+                                <table class="table table-zebra">
+                                    <!-- head -->
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Contact Number</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <!-- row -->
+                                    <tbody>
+                                        <tr v-for="(customer, index) in $page.props.customer_tables"
+                                            :key="customer.customer_id">
+                                            <th>{{ index + 1}}</th>
+                                            <td>{{ customer.customer_firstname }} {{ customer.customer_lastname }}</td>
+                                            <td>{{ customer.contact_number }}</td>
+                                            <td>
+                                                <a :href="'/customers/'+customer.customer_id">
+                                                    <i class="fa-regular fa-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card bg-white m-2 shadow-xl col-start-3 col-span-4">
+                        <div class="card-body">
+                            <h2 class="card-title">List Concern</h2>
                             <div class="overflow-x-auto">
                                 <table class="table table-zebra">
                                     <!-- head -->
@@ -129,39 +162,7 @@ import { ref, onMounted } from 'vue';
                         </div>
                     </div>
 
-                    <div class="card bg-white m-2 shadow-xl col-start-3 col-span-4">
-                        <div class="card-body">
-                            <h2 class="card-title">Lestat Customer</h2>
-                            <div class="overflow-x-auto">
-                                <table class="table table-zebra">
-                                    <!-- head -->
-                                    <thead class="bg-gray-100">
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th>Contact Number</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <!-- row -->
-                                    <tbody>
-                                        <tr v-for="(customer, index) in $page.props.customer_tables"
-                                            :key="customer.customer_id">
-                                            <th>{{ index + 1}}</th>
-                                            <td>{{ customer.customer_firstname }} {{ customer.customer_lastname }}</td>
-                                            <td>{{ customer.contact_number }}</td>
-                                            <td>
-                                                <a :href="'/customers/'+customer.customer_id">
-                                                    <i class="fa-regular fa-eye"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
+                    
                 </div>
             
             </div>

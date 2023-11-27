@@ -13,6 +13,7 @@ class CustomerConcernController extends Controller
     public function index(Customer $customer)
     {
         $concerns = concern::where('customer_id', $customer->customer_id)
+                        ->orderBy('created_at', 'DESC')
                         ->get();
 
         return Inertia::render('Customer/show', [

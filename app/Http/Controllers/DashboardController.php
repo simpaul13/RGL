@@ -21,11 +21,12 @@ class DashboardController extends Controller
         $schedules = schedule::count();
         $users = User::count();
 
-        $concern_tables = concern::limit(10)->get();
+        $concern_tables = concern::orderBy('concerns.created_at', 'DESC')->limit(10)->get();
 
-        $customer_tables = Customer::limit(10)->orderBy('created_at')->get();
+        $customer_tables = Customer::orderBy('customers.created_at', 'DESC')->limit(10)->orderBy('created_at')->get();
 
-        $user_schedules = schedule::whereUserId(auth()->id())
+        $user_schedules = schedule::orderBy('schedules.created_at', 'DESC')
+                                ->whereUserId(auth()->id())
                                 ->joinConcern()
                                 ->limit(10)
                                 ->get();

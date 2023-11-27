@@ -18,6 +18,7 @@ class ScheduleController extends Controller
 
         $schedules = schedule::whereUserId(auth()->id())
                         ->joinConcern()
+                        ->orderBy('schedules.created_at', 'DESC')
                         ->get();
 
         return Inertia::render('Schedule/index', [

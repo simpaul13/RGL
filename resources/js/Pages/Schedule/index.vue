@@ -25,6 +25,12 @@
                                     Schedule Date
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    Name
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Type of Concern
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     Status
                                 </th>
                                 <th scope="col" class="px-6 py-3">
@@ -34,8 +40,15 @@
                         </thead>
                         <tbody>
                             <tr class="bg-white border-b" v-for="schedule in schedules" :key="schedule.schdeules_id">
+                               
                                 <th scope="row">
                                     {{ schedule.schedule_date }}
+                                </th>
+                                <th scope="row">
+                                    {{ schedule.customer_firstname }} {{ schedule.customer_lastname }}
+                                </th>
+                                <th scope="row">
+                                    {{ schedule.type }}
                                 </th>
                                 <td class="px-6 py-4">
                                     <div class="badge badge-success" v-if="schedule.status === 'Completed'">

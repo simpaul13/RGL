@@ -70,7 +70,7 @@ class CustomerController extends Controller
     {
         $customer = Customer::findOrFail($customer->customer_id);
 
-        $conerns = concern::whereCustomerId($customer->customer_id)->joinShedule()->get();
+        $conerns = concern::whereCustomerId($customer->customer_id)->joinShedule()->orderBy('concerns.created_at', 'DESC')->get();
 
         return Inertia::render('Customer/show', [
             'customer' => $customer,
