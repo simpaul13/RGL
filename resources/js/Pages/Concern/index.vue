@@ -8,11 +8,11 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4">
                     <div class="navbar bg-base-100">
                         <div class="flex-1">
-                            <a class="btn btn-ghost text-xl">List of Concern</a>
+                            <a class="btn btn-ghost text-xl">List of Service</a>
                         </div>
                         <div class="flex-none">
                             <div class="menu menu-horizontal px-1 p-2">
-                                <button class="btn btn-active btn-primary" onclick="my_modal_1.showModal()">Create Concern</button>
+                                <button class="btn btn-active btn-primary" onclick="my_modal_1.showModal()">Create Service</button>
 
                             </div>
                         </div>
