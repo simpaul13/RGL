@@ -73,11 +73,11 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <div class="tooltip" data-tip="edit schedule">
+                                    <div class="tooltip" data-tip="edit schedule" v-if="schedule.status !== 'Completed'">
                                         <i class="fa-regular fa-pen-to-square fa-xl mr-2"
                                             @click="showModal(schedule)"></i>
                                     </div>
-                                    <div class="tooltip" data-tip="remove concern">
+                                    <div class="tooltip" data-tip="remove concern" v-if="schedule.status !== 'Completed'">
                                         <i class="fa-solid fa-heart-crack fa-xl mr-2"
                                             @click="declinedConcern(schedule.concern_id)"></i>
                                     </div>
