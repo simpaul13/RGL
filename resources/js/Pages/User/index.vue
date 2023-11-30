@@ -95,7 +95,7 @@
             </div>
         </div>
         <dialog id="my_modal_1" class="modal">
-            <div class="modal-box">
+            <div class="modal-box w-11/12 max-w-5xl">
                 <h3 class="font-bold text-lg">Create Employe!</h3>
                 <div class="divider"></div>
                 <form @submit.prevent="createEmployee">

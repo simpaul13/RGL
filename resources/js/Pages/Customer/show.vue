@@ -85,6 +85,7 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     <a 
+                                        v-if="concern.status !== 'Completed'"
                                         @click="deleteConcern(concern.concern_id)"
                                         href="#" 
                                         class="tooltip mr-2"

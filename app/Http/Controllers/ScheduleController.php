@@ -7,6 +7,8 @@ use App\Http\Requests\UpdatescheduleRequest;
 use App\Models\schedule;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ScheduleController extends Controller
 {
@@ -61,9 +63,16 @@ class ScheduleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatescheduleRequest $request, schedule $schedule)
+    public function update(Request $request, schedule $schedule)
     {
-        //
+        $schedule->update([
+            'schedule_date' => Carbon::parse($request->schedule_date)->toDateTimeString(),
+            'modified_by'   => auth()->id()
+        ]);
+
+        return [
+            'data' => $schedule
+        ];
     }
 
     /**

@@ -68,15 +68,20 @@
             </div>
         </div>
         <dialog id="my_modal_1" class="modal">
-        <div class="modal-box">
+        <div class="modal-box w-11/12">
           <h3 class="font-bold text-lg">Create Customer</h3>
           <div class="divider"></div>
 
            <!-- Form to add new customer -->
            <form @submit.prevent="createCustomer">
             <div class="form-control w-full max-w-xs mt-2">
-              <label class="label-text mb-2">First Name</label>
-              <input v-model="newCustomer.customer_firstname" type="text" class="input input-bordered w-full max-w-xs" />
+                <div class="label">
+                    <label class="label-text mb-2">First Name</label>
+                </div>
+                <input v-model="newCustomer.customer_firstname" type="text" class="input input-bordered w-full max-w-xs" />
+                <!-- <div class="label">
+                    <label class="label-text mb-2">First Name</label>
+                </div> -->
             </div>
 
             <div class="form-control w-full max-w-xs mt-2">

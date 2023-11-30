@@ -80,7 +80,7 @@ import { ref, onMounted } from 'vue';
                                             :key="schedule.concern_id">
                                             <th>{{ index + 1}}</th>
                                             <td>{{ schedule.type }}</td>
-                                            <td>{{ schedule.schedule_date }}</td>
+                                            <td>{{ $moment(schedule.schedule_date).format('llll') }}</td>
                                             <td>
                                                 <div class="badge badge-success">
                                                     {{ schedule.status }}
@@ -97,7 +97,7 @@ import { ref, onMounted } from 'vue';
 
                     <div class="card bg-white m-2 shadow-xl col-start-1 col-span-2">
                         <div class="card-body">
-                            <h2 class="card-title">List Customer</h2>
+                            <h2 class="card-title">Latest Customer</h2>
                             <div class="overflow-x-auto">
                                 <table class="table table-zebra">
                                     <!-- head -->
@@ -130,7 +130,7 @@ import { ref, onMounted } from 'vue';
 
                     <div class="card bg-white m-2 shadow-xl col-start-3 col-span-4">
                         <div class="card-body">
-                            <h2 class="card-title">List Concern</h2>
+                            <h2 class="card-title">Latest Concern</h2>
                             <div class="overflow-x-auto">
                                 <table class="table table-zebra">
                                     <!-- head -->
