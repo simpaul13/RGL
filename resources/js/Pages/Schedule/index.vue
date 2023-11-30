@@ -4,10 +4,8 @@
     <AuthenticatedLayout>
 
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4">
-    <!-- ... existing code ... -->
+            <!-- <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4">
     <div class="navbar bg-base-100">
-      <!-- ... existing code ... -->
       <div class="flex-none">
         <div class="menu menu-horizontal px-1 p-2">
           <input
@@ -19,7 +17,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4">
                 <div class="navbar bg-base-100">
                     <div class="flex-1">
@@ -104,8 +102,8 @@
             </div>
 
             <dialog id="my_modal_1" class="modal">
-                <div class="modal-box">
-                    <form @submit.prevent="changeSchedule(schedule.schdeules_id)">
+                <div class="modal-box w-11/12">
+                    <form @submit.prevent="changeSchedule">
                         <h3 class="font-bold text-lg">Change Schedule!</h3>
                         <div class="flex">
                             <div class="self-center w-full">
@@ -115,7 +113,7 @@
                         </div>
                         <div class="modal-action">
                             <button type="submit" class="btn">Update Schedule</button>
-                            <button class="btn">Close</button>
+                            <button type="button" @click="closeModal" class="btn btn-error">Close</button>
                         </div>
                     </form>
                 </div>
@@ -218,7 +216,8 @@
                 this.schedule = schedule
             },
 
-            async changeSchedule(schdeules_id) {
+            async changeSchedule() {
+                document.getElementById('my_modal_1').close();
                 const confirmResult = await Swal.fire({
                     title: 'Are you sure?',
                     text: 'You won\'t be able to revert this!',
@@ -262,12 +261,11 @@
                     cancelButtonText: 'No, cancel!',
                     reverseButtons: true, // Reverses the order of the buttons (default is false)
                 });
-
                 if (confirmResult.isConfirmed) {
                     try {
 
                         await axios.put(`/concern/approved/${concern_id}`);
-
+                        
                         Swal.fire({
                             icon: 'success',
                             title: 'Concern Change Successfully',
@@ -280,7 +278,7 @@
                         Swal.fire({
                             icon: 'error',
                             title: 'Error Change Concern',
-                            text: `Error Change Concern : ${error.message}`
+                            text: `Error Change Concern : ${error.message}`,
                         });
                     }
                 }
@@ -305,3 +303,4 @@
         }
     };
 </script>
+
