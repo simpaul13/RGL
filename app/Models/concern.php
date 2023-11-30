@@ -32,5 +32,70 @@ class concern extends Model
 
         return $query;
     }
+
+    public function scopeJoinCustomer($query)
+    {
+        $query->addSelect(['*']);
+
+        $query->join('customers', 'customers.customer_id', '=', 'concerns.customer_id');
+
+        return $query;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Decrypt Data
+    |--------------------------------------------------------------------------
+    */
+
+    public function getContactPersonAttribute($value)
+    {
+        return Crypt::decrypt($value);
+    }
+
+    public function getContactNumberAttribute($value)
+    {
+        return Crypt::decrypt($value);
+    }
+
+    public function getProvinceAttribute($value)
+    {
+        return Crypt::decrypt($value);
+    }
+
+    public function getCityAttribute($value)
+    {
+        return Crypt::decrypt($value);
+    }
+
+    public function getBarangayAttribute($value)
+    {
+        return Crypt::decrypt($value);
+    }
+
+    public function getAdditionalInformationAttribute($value)
+    {
+        return Crypt::decrypt($value);
+    }
+
+    public function getCustomerFirstnameAttribute($value)
+    {
+        return Crypt::decrypt($value);
+    }
+
+    public function getCustomerLastnameAttribute($value)
+    {
+        return Crypt::decrypt($value);
+    }
+
+    public function getCustomerMiddlenameAttribute($value)
+    {
+        return Crypt::decrypt($value);
+    }
+
+    public function getEmailAttribute($value)
+    {
+        return Crypt::decrypt($value);
+    }
 }
 

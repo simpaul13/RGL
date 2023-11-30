@@ -24,6 +24,9 @@
                         <thead class="text-xs text-white uppercase bg-blue-700">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
+                                    Name
+                                </th>
+                                <th scope="col" class="px-6 py-3">
                                     Concern
                                 </th>
                                 <th scope="col" class="px-6 py-3">
@@ -39,6 +42,9 @@
                         </thead>
                         <tbody>
                             <tr class="bg-white border-b" v-for="concern in concerns" :key="concern.concern_id">
+                                <th scope="row">
+                                    {{ concern.customer_firstname }} {{ concern.customer_lastname }}
+                                </th>
                                 <th scope="row">
                                     {{ concern.type }}
                                 </th>
