@@ -11,6 +11,7 @@
                             <a class="btn btn-ghost text-xl">List of Service</a>
                         </div>
                         <div class="flex-none">
+                            
                             <div class="menu menu-horizontal px-1 p-2">
                                 <button class="btn btn-active btn-primary" onclick="my_modal_1.showModal()">Create Service</button>
 

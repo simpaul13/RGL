@@ -4,20 +4,7 @@
     <AuthenticatedLayout>
 
         <div class="py-12">
-            <!-- <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4">
-    <div class="navbar bg-base-100">
-      <div class="flex-none">
-        <div class="menu menu-horizontal px-1 p-2">
-          <input
-            type="text"
-            v-model="search"
-            placeholder="Search by name or type"
-            class="input input-bordered"
-          />
-        </div>
-      </div>
-    </div>
-  </div> -->
+            
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4">
                 <div class="navbar bg-base-100">
                     <div class="flex-1">
@@ -25,7 +12,16 @@
                     </div>
                     <div class="flex-none">
                         <div class="menu menu-horizontal px-1 p-2">
-
+                            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                                <div class="navbar">
+                                    <div class="flex-none">
+                                        <div class="menu menu-horizontal px-1 p-2">
+                                            <input type="text" v-model="search" placeholder="Search by name or type"
+                                                class="input input-bordered bg-white" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

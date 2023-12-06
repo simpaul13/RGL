@@ -4,12 +4,25 @@
     <AuthenticatedLayout>
 
         <div class="py-12">
+            
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4">
                 <div class="navbar bg-base-100">
                     <div class="flex-1">
                         <a class="btn btn-ghost text-xl">List of Employees</a>
                     </div>
                     <div class="flex-none">
+                        <div class="menu menu-horizontal px-1 p-2">
+                            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                                <div class="navbar">
+                                    <div class="flex-none">
+                                        <div class="menu menu-horizontal px-1 p-2">
+                                            <input type="text" v-model="search" placeholder="Search by name or type"
+                                                class="input input-bordered bg-white" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="menu menu-horizontal px-1 p-2">
                             <button class="btn btn-active btn-primary" onclick="my_modal_1.showModal()">Create Staff</button>
 
@@ -37,7 +50,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-white border-b" v-for="user in users" :key="user.id">
+                            <tr class="bg-white border-b" v-for="user in filteredUsers" :key="user.id">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                     {{ user.name }}
                                 </th>
@@ -144,6 +157,7 @@ import axios from 'axios';
 
         data() {
             return {
+                search: '',
                 newEmployee: {
                     name: '',
                     email: '',
@@ -318,6 +332,17 @@ import axios from 'axios';
                     }
                 }
             }
+        },
+
+        computed: {
+            filteredUsers() {
+                // Use the search property to filter users
+                const lowerSearch = this.search.toLowerCase();
+                return this.users.filter((user) =>
+                    user.name.toLowerCase().includes(lowerSearch) ||
+                    user.email.toLowerCase().includes(lowerSearch)
+                );
+            },
         }
     };
 </script>

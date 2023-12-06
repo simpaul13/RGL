@@ -4,12 +4,25 @@
     <AuthenticatedLayout>
 
         <div class="py-12">
+           
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-4">
                 <div class="navbar bg-base-100">
                     <div class="flex-1">
                         <a class="btn btn-ghost text-xl">List of Customers</a>
                     </div>
                     <div class="flex-none">
+                        <div class="menu menu-horizontal px-1 p-2">
+                            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                                <div class="navbar">
+                                    <div class="flex-none">
+                                        <div class="menu menu-horizontal px-1 p-2">
+                                            <input type="text" v-model="search" placeholder="Search by name or type"
+                                                class="input input-bordered bg-white" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="menu menu-horizontal px-1 p-2">
                             <button class="btn btn-active btn-primary" onclick="my_modal_1.showModal()">
                                 Create Customer
@@ -38,7 +51,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-white border-b" v-for="customer in customers" :key="customer.id">
+                            <tr class="bg-white border-b" v-for="customer in filteredCustomers" :key="customer.id">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                     {{ customer.customer_firstname }} {{ customer.customer_lastname }}
                                 </th>
@@ -178,6 +191,7 @@
 
         data() {
             return {
+                search: '',
                 selectedCustomer: null,
                 newCustomer: {
                     customer_firstname: '',
@@ -280,6 +294,27 @@
                 newCustomer.barangay = ''
                 newCustomer.zipcode = ''
                 newCustomer.additional_information = ''
+            },
+        },
+        
+        computed: {
+            filteredCustomers() {
+                // Use the search property to filter customers
+                const lowerSearch = this.search.toLowerCase();
+                return this.customers.filter((customer) =>
+                    customer.customer_firstname.toLowerCase().includes(lowerSearch) ||
+                    customer.customer_lastname.toLowerCase().includes(lowerSearch) ||
+                    customer.email.toLowerCase().includes(lowerSearch) ||
+                    customer.company.toLowerCase().includes(lowerSearch) ||
+                    customer.contact_number.toLowerCase().includes(lowerSearch) ||
+                    customer.country.toLowerCase().includes(lowerSearch) ||
+                    customer.province.toLowerCase().includes(lowerSearch) ||
+                    customer.city.toLowerCase().includes(lowerSearch) ||
+                    customer.barangay.toLowerCase().includes(lowerSearch) ||
+                    customer.zipcode.toLowerCase().includes(lowerSearch) ||
+                    customer.additional_information.toLowerCase().includes(lowerSearch) ||
+                    customer.customer_gender.toLowerCase().includes(lowerSearch)
+                );
             },
         }
     };
