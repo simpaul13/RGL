@@ -11,6 +11,7 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
+
     <div>
         <div class="min-h-screen bg-gray-100">
             <nav class="bg-blue-700 border-b border-gray-100 ">
@@ -22,7 +23,7 @@ const showingNavigationDropdown = ref(false);
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('dashboard')">
                                     <ApplicationLogo
-                                        class="block h-9 w-auto fill-current"
+                                        class="block h-10 w-auto fill-current"
                                     />
                                 </Link>
                             </div>
