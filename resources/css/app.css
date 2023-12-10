@@ -4,7 +4,7 @@
 
 
 .login-bg {
-    background: url("../images/sean-pollock-PhYq704ffdA-unsplash.jpg");
+    background: url("~@/resources/images/sean-pollock-PhYq704ffdA-unsplash.jpg");
     background-repeat: no-repeat;
-  background-size: 100% 100%;
+    background-size: 100% 100%;
 }

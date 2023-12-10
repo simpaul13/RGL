@@ -33,15 +33,13 @@ const submit = () => {
     <GuestLayout>
 
         <section class="h-screen">
-  <div class="container mt-40 px-8 py-24 bg-white">
+  <div class="container mt-40 px-8 py-20 bg-gradient-to-r from-sky-500 to-indigo-50/75">
     <div
       class="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
       <!-- Left column container with background-->
       <div class="mb-12 md:mb-0 md:w-8/12 lg:w-6/12">
-        <img
-          src="https://svgshare.com/i/10ao.svg"
-          class="w-full border-2"
-          alt="Phone image" />
+        <h1 class="text-7xl font-bold">RGL Airconditioning Services</h1>
+        <p class="text-4xl mt-10 font-light">Appointment Scheduling System</p>
       </div>
 
       <!-- Right column container with form -->
